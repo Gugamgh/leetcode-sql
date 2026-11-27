@@ -11,7 +11,7 @@
 )
 
 SELECT request_at AS Day,
-    CAST(CAST(SUM(CASE WHEN status != 'Completed' THEN 1 ELSE 0 END) AS DECIMAL(10, 2)) 
+    CAST(SUM(CASE WHEN status != 'completed' THEN 1 ELSE 0 END) * 1.0 
     / COUNT(*) AS DECIMAL(10, 2)) AS [Cancellation Rate]
 FROM TripsByNonBannedUsers
 GROUP BY request_at;
